@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  bootcamp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+
+        with: {python-version: "3.12"}
+
+      - run: pip install pytest ruff
+      - run: |
+          if [ -n "$(ls -A ./members 2>/dev/null)" ]; then
+            ruff check ./members
+          fi
+      # - run: pytest -q ./tests/test_w1.py --member hoang_duc_vinh --variant 1
+      # - run: pytest -q ./tests/test_w1.py --member pham_bach_dang_khoa --variant 2
+      # - run: pytest -q ./tests/test_w1.py --member tran_ngoc_nghia --variant 3
+      # - run: pytest -q ./tests/test_w1.py --member truong_hoang_long --variant 4
+      # - run: pytest -q ./tests/test_w1.py --member tran_quoc_dung --variant 5
+      # - run: pytest -q ./tests/test_w1.py --member vo_le_hoang --variant 6
+      # - run: pytest -q ./tests/test_w1.py --member pham_tran_minh_tuan --variant 7
+      - run: |
+          declare -A VARIANTS=(
+            ["hoang_duc_vinh"]="1"
+            ["pham_bach_dang_khoa"]="2"
+            ["tran_ngoc_nghia"]="3"
+            ["truong_hoang_long"]="4"
+            ["tran_quoc_dung"]="5"
+            ["vo_le_hoang"]="6"
+            ["pham_tran_minh_tuan"]="7"
+          )
+          for member in "${!VARIANTS[@]}"; do
+            if [ -d "./members/$member" ]; then
+              pytest -q ./tests/test_w1.py --member "$member" --variant "${VARIANTS[$member]}"
+            fi
+          done
+
