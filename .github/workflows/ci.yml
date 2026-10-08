@@ -27,18 +27,20 @@ jobs:
       # - run: pytest -q ./tests/test_w1.py --member vo_le_hoang --variant 6
       # - run: pytest -q ./tests/test_w1.py --member pham_tran_minh_tuan --variant 7
       - run: |
-          declare -A VARIANTS=(
-            ["hoang_duc_vinh"]="1"
-            ["pham_bach_dang_khoa"]="2"
-            ["tran_ngoc_nghia"]="3"
-            ["truong_hoang_long"]="4"
-            ["tran_quoc_dung"]="5"
-            ["vo_le_hoang"]="6"
-            ["pham_tran_minh_tuan"]="7"
-          )
-          for member in "${!VARIANTS[@]}"; do
-            if [ -d "./members/$member" ]; then
-              pytest -q ./tests/test_w1.py --member "$member" --variant "${VARIANTS[$member]}"
-            fi
-          done
+          if [ -d "./tests" ]; then
+            declare -A VARIANTS=(
+              ["hoang_duc_vinh"]="1"
+              ["pham_bach_dang_khoa"]="2"
+              ["tran_ngoc_nghia"]="3"
+              ["truong_hoang_long"]="4"
+              ["tran_quoc_dung"]="5"
+              ["vo_le_hoang"]="6"
+              ["pham_tran_minh_tuan"]="7"
+            )
+            for member in "${!VARIANTS[@]}"; do
+              if [ -d "./members/$member" ]; then
+                pytest -q ./tests/test_w1.py --member "$member" --variant "${VARIANTS[$member]}"
+              fi
+            done
+          fi
 
