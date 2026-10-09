@@ -2,11 +2,10 @@ def by_day(schedule : list[tuple]) -> dict:
     schedule.sort(key = lambda event : event[0])
     
     timetable = {}
-    timetable.setdefault("Mon", [])
 
     for event in schedule:
         if (timetable.get(event[1]) == None):
-            timetable[event[1]] = []
+            timetable.setdefault(event[1], [])
             
         timetable[event[1]].append(event[0])
 
