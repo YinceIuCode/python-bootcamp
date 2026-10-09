@@ -1,27 +1,23 @@
-import string 
+def word_count(text: str) -> dict[str, int]:
+    result = {}
 
-def word_count(text:str) -> dict[str, int]:
     text = text.lower()
-    translator = str.maketrans("","",string.punctuation)
-    clean_word = text.translate(translator)
 
-    words = clean_word.split()
+    text_list = text.split()
 
-    counts = {}
-    for word in words:
-        if word.islower():
-            counts[word] = counts.get(word, 0) + 1
+    for word in text_list:
+        word = word.strip(".,!?;:\"'()[]{}")
+        result[word] = result.get(word, 0) + 1
 
-    return counts
+    return result
 
-def get_count(item:tuple[str,int]) -> int:
-    return item[1]
-    
-def top_k (text:str, k:int) -> list[tuple[str, int]]:
+
+def top_k(text: str, k: int) -> list[tuple[str, int]]:
     counts = word_count(text)
-    sorted_items = sorted(counts.items(), key=get_count, reverse=True)
-    return sorted_items[:k]
 
-# print(word_count("Git is fun. Git is fast!"))
-# print(top_k("Git is fun. Git is fast!", 2))
+    return sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:k]
 
+
+if __name__ == "__main__":
+    print(word_count("Git is fun. Git is fast!"))
+    print(top_k("Git is fun. Git is fast!", 2))
