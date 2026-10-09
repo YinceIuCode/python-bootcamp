@@ -15,10 +15,9 @@ int fibonacci(int n){
 
 """
 
-from functools import reduce
-
 def fibonacci(n : int):    
+    from functools import reduce
     return reduce(lambda x, dummy: [x[1], x[0] + x[1]], range(n), [0, 1])[0]
-        
+
 for i in range(100):
     print(fibonacci(i), i)
