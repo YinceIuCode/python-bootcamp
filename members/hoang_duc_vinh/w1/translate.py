@@ -25,6 +25,3 @@ def binary_search(arr: list[int], target: int) -> int:
             right = mid - 1
             
     return -1
-
-if __name__ == "__main__":
-    print(binary_search([3, 1, 2, 5, 8], 5))
