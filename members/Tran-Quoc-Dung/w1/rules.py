@@ -8,11 +8,11 @@ def missing(credits, gpa) -> list[str]:
     else:
         status = ""
         if credits < 120:
-            status += f"Missing {120 - credits} credit(s)"
+            status += f"need {120 - credits} credits"
         
         if gpa < 2:
-            status += "M" if status == "" else " and m"
-            status += f"issing {round(2 - gpa, 2)} on gpa"
+            status += "n" if status == "" else " and n"
+            status += f"eed {round(2 - gpa, 2)} on gpa"
             
         status += "."
         
