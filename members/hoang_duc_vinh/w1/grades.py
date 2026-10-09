@@ -9,6 +9,3 @@ def summary(scores: list[float]) -> dict[str, float]:
         "median": round(statistics.median(scores), 2),
     }
 
-
-if __name__ == "__main__":
-    print(summary([7.5, 9, 6, 8]))
