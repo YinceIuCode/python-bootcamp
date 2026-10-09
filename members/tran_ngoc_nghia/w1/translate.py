@@ -16,30 +16,30 @@ vector<vector<int>> TransposeMatrix (vector<vector<int>>& matrix_2d){
 } """
 
 # Python code:
-def TransposeMatrix(matrix_2d: list[list[int]]) -> list[list[int]]:
+def transpose(matrix_2d: list[list[int]]) -> list[list[int]]:
     return [list(row) for row in zip(*matrix_2d)]
         
-def create_matrix(rows: int, cols: int) -> list[list[int]]:
-    matrix = []
-    count = 0
+# def create_matrix(rows: int, cols: int) -> list[list[int]]:
+#     matrix = []
+#     count = 0
 
-    for r in range(rows):
-        row = []
-        for c in range(cols):
-            row.append(count)
-            count += 1
-        matrix.append(row)
+#     for r in range(rows):
+#         row = []
+#         for c in range(cols):
+#             row.append(count)
+#             count += 1
+#         matrix.append(row)
 
-    return matrix
+#     return matrix
 
-rows = int(input("Enter row(s): "))
-cols = int(input("Enter col(s): "))
-matrix_2d = create_matrix(rows, cols)
-transpose_matrix = TransposeMatrix(matrix_2d)
+# rows = int(input("Enter row(s): "))
+# cols = int(input("Enter col(s): "))
+# matrix_2d = create_matrix(rows, cols)
+# transpose_matrix = TransposeMatrix(matrix_2d)
 
-for row in transpose_matrix:
-    for col in row:
-        print(col, end = " ")
-    print()
+# for row in transpose_matrix:
+#     for col in row:
+#         print(col, end = " ")
+#     print()
 
 

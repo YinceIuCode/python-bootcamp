@@ -9,4 +9,4 @@ def by_day(course_days: list[tuple[str, str]]) -> dict[str, list[str]]:
     return result
 
 
-print(by_day([("CSC10014", "Mon"), ("MTH00003", "Tue"), ("CSC10001", "Mon")]))
+# print(by_day([("CSC10014", "Mon"), ("MTH00003", "Tue"), ("CSC10001", "Mon")]))
