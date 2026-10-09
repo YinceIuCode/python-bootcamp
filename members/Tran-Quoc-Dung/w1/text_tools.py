@@ -7,7 +7,12 @@ def top_k(text: str, k: int) -> list[tuple[str, int]]:
 
 print(top_k("Git is fast. Git is fun!", 2))
 <<<<<<< HEAD
+<<<<<<< HEAD
 print(top_k("Git is fast. Git is fun!", 1))
 =======
 print(top_k("Git is fast. Git is fun!", 1))
 >>>>>>> cf1984e (feat: adding w1-2 homework file text_tools.py)
+=======
+print(top_k("Git is fast. Git is fun!", 1))
+
+>>>>>>> 8eef20e (feat: adding translate.py)
