@@ -1,5 +1,6 @@
 import statistics
 
+
 def summary(scores: list[float]) -> dict[str, float]:
     return {
         "min": round(min(scores), 2),
