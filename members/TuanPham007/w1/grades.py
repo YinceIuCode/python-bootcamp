@@ -1,5 +1,6 @@
 import statistics
 
+
 def summary(scores: list[float]) -> dict:
     return {
         "min": min(scores),
