@@ -12,7 +12,7 @@ def top_k (s: str,k: int) -> list[tuple[str, int]]:
 	i = 0;
 	for key in sorted(s_count, key=s_count.get,reverse=True):
 		k_list.append((key,s_count[key]))
-		i += 1
+		i = i + 1
 		if i == k:
 			break
 	return k_list
