@@ -1,6 +1,7 @@
 import re
 from collections import Counter
 
+
 def word_count(text: str) -> dict[str, int]:
     words = re.findall(r'\b\w+\b', text.lower())
     return dict(Counter(words))
