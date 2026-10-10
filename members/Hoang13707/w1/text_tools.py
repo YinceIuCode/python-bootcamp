@@ -1,12 +1,23 @@
-import string
-from collections import Counter
-
 def word_count(text: str) -> dict[str, int]:
-    clean_text = text.translate(str.maketrans("", "", string.punctuation)).lower()
-    words = clean_text.split()
-    return dict(Counter(words))
+    result = {}
+
+    text = text.lower()
+
+    text_list = text.split()
+
+    for word in text_list:
+        word = word.strip(".,!?;:\"'()[]{}")
+        result[word] = result.get(word, 0) + 1
+
+    return result
 
 
 def top_k(text: str, k: int) -> list[tuple[str, int]]:
     counts = word_count(text)
-    return Counter(counts).most_common(k)
+
+    return sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:k]
+
+
+if __name__ == "__main__":
+    print(word_count("Git is fun. Git is fast!"))
+    print(top_k("Git is fun. Git is fast!", 2))
