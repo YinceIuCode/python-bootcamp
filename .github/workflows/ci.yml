@@ -29,13 +29,13 @@ jobs:
       - run: |
           if [ -d "./tests" ]; then
             declare -A VARIANTS=(
-              ["hoang_duc_vinh"]="1"
-              ["pham_bach_dang_khoa"]="2"
-              ["tran_ngoc_nghia"]="3"
-              ["truong_hoang_long"]="4"
-              ["tran_quoc_dung"]="5"
-              ["vo_le_hoang"]="6"
-              ["pham_tran_minh_tuan"]="7"
+              ["YinceIuCode"]="1"
+              ["doomsdaycome"]="2"
+              ["NghiaTran2504"]="3"
+              ["tl7243"]="4"
+              ["Dunghun111"]="5"
+              ["Hoang13707"]="6"
+              ["TuanPham007"]="7"
             )
             for member in "${!VARIANTS[@]}"; do
               if [ -d "./members/$member" ]; then
