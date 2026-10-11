@@ -28,6 +28,7 @@ jobs:
       # - run: pytest -q ./tests/test_w1.py --member pham_tran_minh_tuan --variant 7
       - run: |
           if [ -d "./tests" ]; then
+              set +e
               declare -A VARIANTS=(
                 ["YinceIuCode"]="1"
                 ["doomsdaycome"]="2"
@@ -49,12 +50,14 @@ jobs:
                   fi
                 fi
               done
+              has_failure=0
               for m in "${!results[@]}"; do
                 echo "$m: ${results[$m]}"
-              done
-              for m in "${!results[@]}"; do
                 if [ "${results[$m]}" == "FAIL" ]; then
-                  exit 1
+                  has_failure=1
                 fi
               done
+              if [ $has_failure -eq 1 ]; then
+                exit 1
+              fi
           fi
