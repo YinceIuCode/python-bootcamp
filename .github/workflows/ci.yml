@@ -37,23 +37,24 @@ jobs:
                 ["Hoang13707"]="6"
                 ["TuanPham007"]="7"
               )
-              failed_members=()
+              declare -A results=()
               for member in "${!VARIANTS[@]}"; do
                 if [ -d "./members/$member" ]; then
                   echo "Running tests for $member..."
                   pytest -q ./tests/test_w1.py --member "$member" --variant "${VARIANTS[$member]}"
-                  if [ $? -ne 0 ]; then
-                    failed_members+=("$member")
+                  if [ $? -eq 0 ]; then
+                    results["$member"]="PASS"
+                  else
+                    results["$member"]="FAIL"
                   fi
                 fi
               done
-              if [ ${#failed_members[@]} -eq 0 ]; then
-                echo "All members passed the tests!"
-              else
-                echo "Failed members:"
-                for m in "${failed_members[@]}"; do
-                  echo " - $m"
-                done
-              fi
+              for m in "${!results[@]}"; do
+                echo "$m: ${results[$m]}"
+              done
+              for m in "${!results[@]}"; do
+                if [ "${results[$m]}" == "FAIL" ]; then
+                  exit 1
+                fi
+              done
           fi
-
