@@ -1,4 +1,7 @@
-import pytest, statistics
+import statistics
+
+import pytest
+
 
 def test_w1_1(load):
     loaded = load("w1", "grades")
