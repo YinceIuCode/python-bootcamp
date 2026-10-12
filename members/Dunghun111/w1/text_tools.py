@@ -9,3 +9,6 @@ def top_k(text: str, k: int) -> list[tuple[str, int]]:
 
 print(top_k("Git is fast. Git is fun!", 2))
 print(top_k("Git is fast. Git is fun!", 1))
+print(word_count("This is a random test!"))
+print(word_count("ABC ABC"))
+print(top_k("The quick brown fox jump over the lazy dog.", 2))
