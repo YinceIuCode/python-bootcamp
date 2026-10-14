@@ -10,7 +10,6 @@ class Task:
     deadline: date
 
     def __post_init__(self):
-        # Đảm bảo importance luôn từ 1 đến 5 theo tài liệu hướng dẫn
         if not 1 <= self.importance <= 5:
             raise ValueError("importance must be 1-5")
 
