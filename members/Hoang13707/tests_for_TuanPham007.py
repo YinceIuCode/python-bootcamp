@@ -1,4 +1,3 @@
-import pytest
 
 
 def test_tuan_pham_case_1():
