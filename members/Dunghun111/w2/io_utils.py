@@ -1,6 +1,8 @@
 import csv
+import json
+from dataclasses import asdict
 
-from models import Task, date
+from .models import Task, date
 
 
 def load_tasks(path) -> list[Task]:
@@ -26,18 +28,15 @@ def load_tasks(path) -> list[Task]:
         
     
 def save_json(tasks : list[Task], path: str):
-    with open(path, "+w") as csvfile:
-        if not csvfile.writable():
+    with open(path, "+w") as jsonfile:
+        if not jsonfile.writable():
             raise FileExistsError("Cannot write to file.")
         
-        buffer = [["title", "importance", "effort_h", "deadline"]]
-        
+        list_task_dict = []
         for task in tasks:
-            buffer.append([f'{task.title}',f'{task.importance}',f'{task.effort_h}',f'{task.deadline.year}-{task.deadline.month}-{task.deadline.day}'])
+            list_task_dict.append(asdict(task))
+            
+        json.dump(list_task_dict, jsonfile, default=str)
         
-        writeon = csv.writer(csvfile)
-        writeon.writerows(buffer)
-        
-save_json(load_tasks("test.csv"), "output.csv")
 
-    
+save_json(load_tasks("samples/tasks.csv"), "tasks.json")

@@ -1,5 +1,9 @@
-from io_utils import load_tasks
-from models import Task
+import sys
+
+print("\n", sys.path, "\n")
+
+
+from .models import Task
 
 
 class InfeasiblePlan(Exception):
@@ -10,7 +14,7 @@ class InfeasiblePlan(Exception):
     def __str__(self):
         return f"{self.needed_h} hour(s) is over {self.available_h} available hour(s)."
 
-def check_plans(tasks : list[Task], available_h : float) -> None:
+def check_feasible(tasks : list[Task], available_h : float) -> None:
     sorted_tasks = sorted(tasks, key = lambda task : task.deadline)
     total_required_day_h = 0
     
@@ -27,6 +31,4 @@ def check_plans(tasks : list[Task], available_h : float) -> None:
             continue
             
         total_required_day_h += tasks[task_index].effort_h
-
-check_plans(load_tasks("test.csv"), 12)
     
