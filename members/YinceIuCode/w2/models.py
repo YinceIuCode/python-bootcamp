@@ -1,9 +1,11 @@
 from dataclasses import dataclass
 from datetime import date
 
+
 @dataclass
 class Task:
     """Represents a study task for Week 2."""
+
     title: str
     importance: int
     effort_h: float
