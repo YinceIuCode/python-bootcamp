@@ -1,4 +1,5 @@
 import pytest
+
 import members.YinceIuCode.w1.grades as g
 import members.YinceIuCode.w1.text_tools as t
 import members.YinceIuCode.w1.rules as r
@@ -31,7 +32,6 @@ def test_w1_3_thesis():
 
 
 def test_w1_4_translate():
-    # Kiểm tra hàm binary_search trong translate.py của YinceIuCode
     arr = [1, 3, 5, 7, 9, 11]
     assert tr.binary_search(arr, 7) == 3
     assert tr.binary_search(arr, 2) == -1
