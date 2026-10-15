@@ -36,7 +36,7 @@ jobs:
         run: pip install ruff
 
       - name: Lint Files
-      - run: |
+        run: |
           declare -A MEMBERS=(
             ["YinceIuCode"]="1"
             ["doomsdaycome"]="2"
