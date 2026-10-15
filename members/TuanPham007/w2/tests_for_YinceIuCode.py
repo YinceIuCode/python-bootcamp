@@ -1,10 +1,10 @@
 import pytest
 
 import members.YinceIuCode.w1.grades as g
-import members.YinceIuCode.w1.text_tools as t
 import members.YinceIuCode.w1.rules as r
-import members.YinceIuCode.w1.translate as tr
+import members.YinceIuCode.w1.text_tools as t
 import members.YinceIuCode.w1.timetable as tt
+import members.YinceIuCode.w1.translate as tr
 
 
 def test_w1_1_summary():
