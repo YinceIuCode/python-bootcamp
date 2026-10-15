@@ -51,9 +51,9 @@ jobs:
           is_fail=0
           for member in "${!MEMBERS[@]}"; do
             if ruff check "./members/$member" --quiet; then
-              printf "%-20s PASS\n" "$member:"
+              printf "%-15s PASSED\n" "$member:"
             else
-              printf "%-20s FAIL\n" "$member:"
+              printf "%-15s FAILED\n" "$member:"
               is_fail=1
             fi
           done
@@ -86,9 +86,9 @@ jobs:
           is_fail=0
           for member in "${!MEMBERS[@]}"; do
             if pytest -q ./tests/test_w1.py --member "$member" --variant "${MEMBERS[$member]}" > /dev/null 2>&1; then
-              printf "%-20s PASS\n" "$member:"
+              printf "%-15s PASSED\n" "$member:"
             else
-              printf "%-20s FAIL\n" "$member:"
+              printf "%-15s FAILED\n" "$member:"
               is_fail=1
             fi
           done
@@ -124,9 +124,9 @@ jobs:
           is_fail=0
           for member in "${!MEMBERS[@]}"; do
             if pytest -q ./tests/test_w2.py --member "$member" > /dev/null 2>&1; then
-              printf "%-20s PASS\n" "$member:"
+              printf "%-15s PASSED\n" "$member:"
             else
-              printf "%-20s FAIL\n" "$member:"
+              printf "%-15s FAILED\n" "$member:"
               is_fail=1
             fi
           done
