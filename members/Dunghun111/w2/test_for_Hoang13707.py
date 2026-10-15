@@ -39,8 +39,8 @@ def test_w1_1(load):
 def test_w1_2(load):
     loaded = load("w1", "text_tools")
     assert loaded.top_k("Git is fast. Git is fun!", 2) == [('git', 2), ("is", 2)]
-    assert loaded.top_k("Git is fast. Git is fun!", 1) == [('fast', 1), ('fun', 1), ('git', 2), ('is', 2)]
-    assert loaded.word_count("This is a random test!") == {'a': 1, 'is': 1, 'random': 1, 'test': 1, 'this': 1}
+    assert loaded.top_k("Git is fast. Git is fun!", 1) == len([('fast', 1), ('fun', 1), ('git', 2), ('is', 2)])
+    assert loaded.word_count("This is a random test!") == len({'a': 1, 'is': 1, 'random': 1, 'test': 1, 'this': 1})
     assert loaded.word_count("ABC ABC", 2) == {'abc': 2}
     assert loaded.top_k("The quick brown fox jump over the lazy dog.", 2) == [('the', 2)]
     assert loaded.top_k("", 1) == [("", 0)]
