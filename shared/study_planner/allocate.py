@@ -1,4 +1,5 @@
-from dataclasses import dataclass
+from shared.contract import Task, Block
+
 from datetime import date
  
 def bisect(find, array):
