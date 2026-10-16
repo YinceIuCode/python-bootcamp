@@ -1,7 +1,8 @@
-from shared.contract import Task, Block
-
 from datetime import date
- 
+
+from shared.contract import Block, Task
+
+
 def bisect(find, array):
     s = 0
     e = len(array) - 1
