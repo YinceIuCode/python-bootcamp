@@ -31,7 +31,6 @@ def member(request):
 def variant(request):
     return int(request.config.getoption("--variant"))
 
-
 @pytest.fixture
 def load(member):
     def _load(week: str, module: str):

@@ -6,7 +6,6 @@ import pytest
 
 SAMPLES = Path(__file__).resolve().parents[1] / "samples"
 
-
 def test_w2_1_task(load):
     m = load("w2", "models")
     t = m.Task("DS exam", 5, 6.0, date(2026, 10, 30))
