@@ -15,7 +15,7 @@ def load_tasks(path: str) -> list[Task]:
             if not row or all(field.strip() == "" for field in row):
                 continue
             if len(row) < 4:
-                raise ValueError(f"Line {line_num}: Invalid number of fields.")
+                raise ValueError(f"line {line_num}: Invalid number of fields.")
 
             try:
                 title = row[0].strip()
@@ -33,7 +33,7 @@ def load_tasks(path: str) -> list[Task]:
                 )
                 tasks.append(task)
             except Exception as e:  # noqa: BLE001
-                raise ValueError(f"Line {line_num}: {e}")
+                raise ValueError(f"line {line_num}: {e}")
 
     return tasks
 
