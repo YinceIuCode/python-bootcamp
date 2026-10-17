@@ -4,6 +4,7 @@ from datetime import date
 
 from .models import Task
 
+
 def load_tasks(path: str) -> list[Task]:
 	tasks = []
 	with open(path, mode="r", encoding="utf-8") as f:

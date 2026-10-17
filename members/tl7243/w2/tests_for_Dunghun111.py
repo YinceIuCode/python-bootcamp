@@ -1,4 +1,3 @@
-import pytest
 
 def test_w1_1(load):
 	test = load("w1", "grades")
