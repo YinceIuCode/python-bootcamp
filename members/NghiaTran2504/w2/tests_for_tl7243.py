@@ -1,4 +1,3 @@
-import pytest
 import sys
 from pathlib import Path
 
@@ -7,6 +6,7 @@ if str(bootcamp_dir) not in sys.path:
     sys.path.insert(0, str(bootcamp_dir))
 
 from members.tl7243.w1.translate import primes_up_to
+
 
 def test_sieve_basic_small():
     assert primes_up_to(10) == [2, 3, 5, 7]

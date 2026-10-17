@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from .io_utils import load_task
+
 
 def main():
     csv_path = Path(__file__).parent / "tasks_bad.csv"
