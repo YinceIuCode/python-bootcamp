@@ -158,7 +158,7 @@ jobs:
           )
           is_fail=0
           for module in "${!MODULES[@]}"; do
-            if pytest -q ./tests/test_"$member".py > /dev/null 2>&1; then
+            if pytest -q ./tests/test_"$member".py; then
               printf "%-15s PASSED\n" "$member:"
             else
               printf "%-15s FAILED\n" "$member:"
