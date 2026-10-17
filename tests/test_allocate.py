@@ -1,5 +1,7 @@
 from datetime import date
 
+import pytest
+
 from shared.contract import Task
 from shared.study_planner.allocate import allocate
 
@@ -30,7 +32,7 @@ def test_allocate_not_enough_hours_edge_case():
     try:
         blocks = allocate([t1], available_hours)
         assert len(blocks) == 0
-    except Exception as e:
+    except UnboundLocalError as e:
         # If the bisect throws an UnboundLocalError (which it currently does for large values),
         # this test will fail, indicating a bug in allocate.py that the team needs to fix!
         pytest.fail(f"Allocate algorithm crashed on edge case: {e}")
