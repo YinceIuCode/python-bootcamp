@@ -1,6 +1,9 @@
-import pytest
 from datetime import date
+
+import pytest
+
 from shared.study_planner.parse import parse_csv
+
 
 def test_parse_csv_valid_file(tmp_path):
     """Test parsing a valid CSV file."""

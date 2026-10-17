@@ -1,6 +1,8 @@
 from datetime import date
+
 from shared.contract import Task
 from shared.study_planner.prioritize import prioritize
+
 
 def test_prioritize_normal_tasks():
     """Test prioritizing tasks based on importance and days left."""

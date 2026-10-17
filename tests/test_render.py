@@ -1,6 +1,8 @@
 from datetime import date
-from shared.contract import Task, Block
+
+from shared.contract import Block, Task
 from shared.study_planner.render import render
+
 
 def test_render_normal_blocks():
     """Test rendering a valid list of study blocks."""
