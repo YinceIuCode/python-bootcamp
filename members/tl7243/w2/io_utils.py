@@ -20,7 +20,7 @@ def load_tasks(path: str) -> list[Task]:
 					date.fromisoformat(row[3].strip()) #deadline
 				)
 				tasks.append(task)
-			except Exception as e:
+			except (KeyError, ValueError) as e:
 				raise ValueError(f"line {line}: {e}")
 
 	return tasks
