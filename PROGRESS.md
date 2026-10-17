@@ -7,3 +7,10 @@
 | Dunghun111      | w1   | #9    | #24 | Hoang13707      | N/A   | 4.0   |
 | Hoang13707      | w1   | #10   | #17 | TuanPham007     | N/A   | 4.0   |
 | TuanPham007     | w1   | #11   | #18 | YinceIuCode     | N/A   | 4.0   |
+| YinceIuCode     | w2   | #43   | #71 | TuanPham007     | 03/03 | 4.0   |
+| doomsdaycome    | w2   | #44   | #70 | YinceIuCode     | 03/03 | 3.0   |
+| NghiaTran2504   | w2   | #45   | #61 | doomsdaycome    | 03/03 | 4.0   |
+| tl7243          | w2   | #46   | #75 | NghiaTran2504   | 03/03 | 5.0   |
+| Dunghun111      | w2   | #47   | #72 | Hoang13707      | 03/03 | 4.0   |
+| Hoang13707      | w2   | #48   | #55 | tl7243          | 03/03 | 4.0   |
+| TuanPham007     | w2   | #49   | #63 | Dunghun111      | 03/03 | 4.0   |
