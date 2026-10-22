@@ -1,8 +1,14 @@
+"""Module providing utilities for parsing relative and absolute date strings."""
+
 from datetime import date, timedelta
 
 
 def parse_due(text: str, today: date) -> date:
-    """Parse text into a date relative to today."""
+    """Parse text into a date relative to today.
+
+    Supports ISO format (YYYY-MM-DD), relative terms ('today', 'tomorrow',
+    'in N days'), and weekday names (e.g., 'Fri').
+    """
     t = text.strip().lower()
 
     # 1. ISO format YYYY-MM-DD
@@ -23,13 +29,13 @@ def parse_due(text: str, today: date) -> date:
         if len(parts) == 3 and parts[1].isdigit():
             return today + timedelta(days=int(parts[1]))
 
-    # 4. Weekday names (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
+    # 4. Weekday names
     weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"]
     if t in weekdays:
         target_weekday = weekdays.index(t)
         current_weekday = today.weekday()
         days_ahead = target_weekday - current_weekday
-        if days_ahead <= 0:  # Next occurrence
+        if days_ahead <= 0:
             days_ahead += 7
         return today + timedelta(days=days_ahead)
 
