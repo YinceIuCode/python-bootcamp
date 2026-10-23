@@ -1,20 +1,38 @@
+"""Module for counting word frequencies and finding top-k frequent words in text."""
+
+
 def word_count(text: str) -> dict[str, int]:
-    result = {}
+    """Count the occurrences of each word in a given text, ignoring case and punctuation.
 
-    text = text.lower()
+    Args:
+        text: The input string to process.
 
-    text_list = text.split()
+    Returns:
+        A dictionary mapping each cleaned word to its frequency count.
+    """
+    result: dict[str, int] = {}
+    text_lower = text.lower()
+    text_list = text_lower.split()
 
     for word in text_list:
-        word = word.strip(".,!?;:\"'()[]{}")
-        result[word] = result.get(word, 0) + 1
+        cleaned_word = word.strip(".,!?;:\"'()[]{}")
+        if cleaned_word:
+            result[cleaned_word] = result.get(cleaned_word, 0) + 1
 
     return result
 
 
 def top_k(text: str, k: int) -> list[tuple[str, int]]:
-    counts = word_count(text)
+    """Find the top-k most frequent words in a text, sorted by frequency descending and then alphabetically.
 
+    Args:
+        text: The input string to process.
+        k: The maximum number of top words to return.
+
+    Returns:
+        A list of tuples containing words and their corresponding counts.
+    """
+    counts = word_count(text)
     return sorted(counts.items(), key=lambda item: (-item[1], item[0]))[:k]
 
 

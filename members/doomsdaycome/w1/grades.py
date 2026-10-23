@@ -1,7 +1,17 @@
+"""Module for computing statistical summaries of score lists."""
+
 import statistics
 
 
 def summary(scores: list[float]) -> dict[str, float]:
+    """Compute summary statistics (min, max, mean, median) for a list of scores.
+
+    Args:
+        scores: A list of numerical scores.
+
+    Returns:
+        A dictionary containing rounded summary statistics.
+    """
     return {
         "min": round(min(scores), 2),
         "max": round(max(scores), 2),
@@ -11,4 +21,4 @@ def summary(scores: list[float]) -> dict[str, float]:
 
 
 if __name__ == "__main__":
-    print(summary([7.5, 9, 6, 8]))
+    print(summary([7.5, 9.0, 6.0, 8.0]))
