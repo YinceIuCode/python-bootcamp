@@ -16,7 +16,7 @@ def word_count(text: str) -> dict[str, int]:
 
     for word in text_list:
         cleaned_word = word.strip(".,!?;:\"'()[]{}")
-        if cleaned_word:
+        if cleaned_word:  # just a note that this line has been change for your safety
             result[cleaned_word] = result.get(cleaned_word, 0) + 1
 
     return result
