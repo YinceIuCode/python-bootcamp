@@ -1,12 +1,26 @@
+"""Module for loading and saving task data using CSV and JSON formats."""
+
 import csv
 import json
 from datetime import date
+from typing import Any
 
 from .models import Task
 
 
 def load_tasks(path: str) -> list[Task]:
-    tasks = []
+    """Load tasks from a CSV file.
+
+    Args:
+        path: The file path to the CSV file.
+
+    Returns:
+        A list of Task objects parsed from the CSV rows.
+
+    Raises:
+        ValueError: If a row contains invalid data or formatting.
+    """
+    tasks: list[Task] = []
 
     with open(path, mode="r", encoding="utf-8") as file:
         reader = csv.reader(file)
@@ -28,10 +42,16 @@ def load_tasks(path: str) -> list[Task]:
 
 
 def save_json(tasks: list[Task], path: str) -> None:
-    data = []
+    """Save a list of tasks to a JSON file.
+
+    Args:
+        tasks: A list of Task objects to serialize.
+        path: The target file path for the JSON output.
+    """
+    data: list[dict[str, Any]] = []
 
     for task in tasks:
-        task_dict = {}
+        task_dict: dict[str, Any] = {}
         task_dict["title"] = task.title
         task_dict["importance"] = task.importance
         task_dict["effort_h"] = task.effort_h
