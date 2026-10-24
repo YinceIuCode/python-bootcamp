@@ -1,5 +1,6 @@
 from shared.contract import Block, Task
 
+
 def allocate(tasks: list[Task], hours: float) -> list[Block]:
     allocated_blocks = []
     available_hours = hours
