@@ -37,7 +37,7 @@ def parse_due(text: str, today: date | None = None) -> date:
         return today + timedelta(days=1)
 
     if lowered.startswith("in ") and (
-        lowered.endswith(" days") or lowered.endswith(" day")
+        lowered.endswith((" days", " day"))
     ):
         parts = lowered.split()
         if len(parts) == 3:

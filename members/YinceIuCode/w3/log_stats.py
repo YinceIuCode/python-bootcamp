@@ -1,7 +1,7 @@
 """Module for analysing chat route latencies and request counts."""
 
-from collections import Counter, defaultdict
 import math
+from collections import Counter, defaultdict
 from typing import Any
 
 

@@ -1,9 +1,9 @@
 import argparse
 import csv
+import sys
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-import sys
 
 
 @dataclass
