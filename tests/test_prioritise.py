@@ -1,7 +1,7 @@
 from datetime import date
 
 from shared.contract import Task
-from shared.study_planner.prioritize import prioritize
+from shared.study_planner.prioritise import prioritize
 
 
 def test_prioritize_normal_tasks():

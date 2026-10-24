@@ -190,7 +190,7 @@ jobs:
         run: |
           declare -A MODULES=(
             ["parse"]="1"
-            ["prioritize"]="2"
+            ["prioritise"]="2"
             ["allocate"]="3"
             ["render"]="4"
           )
