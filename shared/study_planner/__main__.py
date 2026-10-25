@@ -37,7 +37,7 @@ def main(args: list[str] | None = None) -> None:
     except FileNotFoundError:
         print("File error: Cannot found file.")
         return
-            
+    
     prioritized_tasks = prioritise(tasks, parsed_args.today)
     
     try:
