@@ -1,5 +1,6 @@
 from statistics import quantiles
 
+
 def analyse(pairs : list[tuple]) -> dict:
     route_data_dict = {}
     analysed_data = {}
@@ -10,7 +11,7 @@ def analyse(pairs : list[tuple]) -> dict:
             
         route_data_dict[pair[0]].append(pair[1])
     
-    for key in route_data_dict.keys():
+    for key in route_data_dict.items():
         analysed_data[key] = {
             "counts" : int,
             "p95" : float,

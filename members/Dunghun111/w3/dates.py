@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+
 def parse_due(text: str, today: date) -> date:
     splitted_dash = text.split("-")
     splitted_space = text.split(" ")

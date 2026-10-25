@@ -1,5 +1,6 @@
 import argparse
 from datetime import date
+
 from shared.study_planner import allocate, parse
 
 if __name__ == "__main__":
@@ -47,7 +48,6 @@ if __name__ == "__main__":
     for block_index in range(len(hours_blocks)):
         block = hours_blocks[block_index]
         
-        if len(block.task.title) > max_length:
-            max_length = len(block.task.title)
+        max_length = max(max_length, len(block.task.title))
             
         print(f"  {block_index}. {block.task.title} " + (6 + (max_length - len(block.task.title))) * "." + f" {block.hours} h")
