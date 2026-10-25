@@ -1,18 +1,36 @@
 # Study Planner System
 
-A lightweight command-line tool designed to parse tasks, manage study allocations, and analyze log statistics efficiently.
+A lightweight command-line tool designed to parse tasks from a CSV file, prioritise them by importance and deadline, and greedily allocate study blocks within available hours.
 
 ## 🚀 Installation & Requirements
 
-Ensure you have **Python 3.9+** installed on your system. No external dependencies are required beyond the Python Standard Library (`argparse`, `datetime`, `pathlib`, `collections`).
+Ensure you have **Python 3.10+** installed on your system. No external dependencies are required beyond the Python Standard Library (`argparse`, `csv`, `datetime`, `logging`, `pathlib`).
 
 ## 📖 Sample CLI Execution Commands
 
-Below are example commands to run and execute the Study Planner CLI tool in various scenarios:
+Run the commands below from the `python-bootcamp/` directory:
 
 ### 1. Basic Task Allocation
-Execute with a tasks file and total allocated hours:
+Execute with the sample tasks CSV file and total available hours:
 ```bash
-python3 -m shared.study_planner.cli tasks.yaml --hours 4.5
-python3 -m shared.study_planner.cli tasks.yaml --hours 3.0 --today 2026-10-30
-python3 -m shared.study_planner.cli --help
+python -m shared.study_planner samples/tasks.csv --hours 2
+```
+
+### 2. Custom Anchor Date
+Specify an anchor date (`--today`) in `YYYY-MM-DD` format for priority calculation:
+```bash
+python -m shared.study_planner samples/tasks.csv --hours 3.0 --today 2026-10-26
+```
+
+### 3. View CLI Help
+```bash
+python -m shared.study_planner --help
+```
+
+### 📋 Sample Output
+```Plaintext
+Plan warning: Plan is not feasible. Some tasks will be discarded to satisfy available hour(s).
+=== Study Planner Blocks ===
+1. Task: Assignment | Importance: 4 | Deadline: 2026-10-27 | Allocated: 1.5h
+Total Allocated Hours: 1.5h
+```
