@@ -2,9 +2,13 @@ import csv
 from datetime import date
 
 from shared.contract import Task
+from shared.study_planner.logger import get_logger
 
+logger = get_logger(__name__)
 
 def parse_csv(path: str) -> list[Task]:
+    """Parse tasks from a CSV file and log the reading event."""
+    logger.info("Reading tasks from CSV file: %s", path)
     tasks = []
 
     with open(path, mode="r", encoding="utf-8") as file:
@@ -21,6 +25,8 @@ def parse_csv(path: str) -> list[Task]:
                 tasks.append(task)
 
             except Exception as e:
+                logger.error("Invalid row at line %d in %s: %s", line, path, e)
                 raise ValueError(f"invalid row at line {line}: {e}") from e
 
+    logger.info("Successfully loaded %d tasks from %s", len(tasks), path)
     return tasks
