@@ -20,8 +20,7 @@ def parse_due(text: str, today: date) -> date:
 	if text2 == "tomorrow":
 		return today + timedelta(days=1)
 
-	if text2.startswith("in ") and (text2.endswith((" days", " day"))):
-		if len(text2.split()) == 3 and text2.split()[1].isdigit():
+	if text2.startswith("in ") and (text2.endswith((" days", " day"))) and len(text2.split()) == 3 and text2.split()[1].isdigit():
 			return today + timedelta(days=int(text2.split()[1]))
 
 	weekdays = {
