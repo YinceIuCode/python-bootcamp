@@ -17,7 +17,15 @@ void insertionSort(int arr[], int n) {
 """
 
 
-def insertion_sort(arr):
+def insertion_sort(arr: list[int]) -> list[int]:
+    """Sort a list of integers in ascending order using the insertion sort algorithm.
+
+    Args:
+        arr: The list of integers to sort.
+
+    Returns:
+        The sorted list of integers.
+    """
     for i in range(1, len(arr)):
         key = arr[i]
         j = i - 1
