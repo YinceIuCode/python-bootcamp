@@ -3,7 +3,7 @@
 import logging
 from pathlib import Path
 
-LOG_FILE = Path("study_planner.log")
+LOG_FILE = Path(__file__).resolve().parents[2] / "docs/study_planner.log"
 
 
 def get_logger(name: str = "study_planner") -> logging.Logger:
