@@ -12,18 +12,21 @@ def analyse(pairs : list[tuple]) -> dict:
             
         route_data_dict[pair[0]].append(pair[1])
     
-    for key in route_data_dict.items():
-        analysed_data[key] = {
-            "counts" : int,
-            "p95" : float,
-            "slowest" : float,
-        }
-        
-        analysed_data[key]["counts"] = len(route_data_dict[key])
-        analysed_data[key]["p95"] = quantiles(route_data_dict[key], n=100, method="inclusive")[94]
-        analysed_data[key]["slowest"] = max(route_data_dict[key])
+    analysed_data = {
+        "counts" : {},
+        "p95" : {},
+        "slowest" : None,
+    }
     
+    for key_tuple in route_data_dict.items():
+        key = key_tuple[0]
+        analysed_data["counts"][key] = len(route_data_dict[key])
+        analysed_data["p95"][key] = quantiles(route_data_dict[key], n=100, method="exclusive")[94]
+        analysed_data["p95"][key] = min(max(route_data_dict[key]), analysed_data["p95"][key])
+        
+        if analysed_data["slowest"] == None or max(route_data_dict[analysed_data["slowest"]]) < max(route_data_dict[key]):
+            analysed_data["slowest"] = key
+                    
     return analysed_data
 
-test = [("a", 1), ("a", 2), ("a", 3), ("b", 1), ("b", 2)]
-print(analyse(test))
+print(analyse([("fee", 100), ("fee", 300), ("rag", 900), ("rag", 1100), ("fee", 200)]))

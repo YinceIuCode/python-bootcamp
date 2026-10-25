@@ -59,11 +59,12 @@ def parse_due(text: str, today: date) -> date:
     
     elif len(splitted_space) == 1 and day_of_week.get(splitted_space[0].lower()) != None:
         today_day_of_week = today.weekday()
-        due_date = today + timedelta(days = 7 - abs(today_day_of_week - day_of_week[splitted_space[0].lower()]))
+        due_date = today + timedelta(days = abs(today_day_of_week - day_of_week[splitted_space[0].lower()]))
+        due_date = due_date + timedelta(days=7) if due_date == today else due_date
         
     else:
         raise ValueError
     
     return due_date
 
-print(parse_due("Sat", date(2026, 10, 25)))
+print(parse_due("Fri", date(2026, 10, 6)))
