@@ -206,3 +206,38 @@ jobs:
           if [ $is_fail -eq 1 ]; then
             exit 1
           fi
+
+  t_hw_w3_testing:
+    name: Team Homework W3 Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+
+      - name: Install Packages
+        run: pip install pytest
+
+      - name: Test W3 CLI & E2E
+        run: |
+          is_fail=0
+          if pytest -q ./tests/test_e2e_w3.py > /dev/null 2>&1; then
+            printf "%-15s PASSED\n" "e2e_w3:"
+          else
+            printf "%-15s FAILED\n" "e2e_w3:"
+            is_fail=1
+          fi
+
+          if python -m shared.study_planner samples/tasks.csv --hours 2 > /dev/null 2>&1; then
+            printf "%-15s PASSED\n" "cli_run:"
+          else
+            printf "%-15s FAILED\n" "cli_run:"
+            is_fail=1
+          fi
+
+          if [ $is_fail -eq 1 ]; then
+            exit 1
+          fi
