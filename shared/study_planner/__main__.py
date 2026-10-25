@@ -3,10 +3,11 @@ from datetime import date
 from pathlib import Path
 
 from shared.study_planner.allocate import allocate
+from shared.study_planner.errors import InfeasiblePlan, check_feasible
 from shared.study_planner.parse import parse_csv
 from shared.study_planner.prioritise import prioritise
 from shared.study_planner.render import render
-from members.Dunghun111.w2.errors import check_feasible, InfeasiblePlan
+
 
 def main(args: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description="Study Planner CLI")
