@@ -32,9 +32,11 @@ def main(args: list[str] | None = None) -> None:
         
     except FileExistsError:
         print("File error: File is empty/invalid.")
+        return
     
     except FileNotFoundError:
         print("File error: Cannot found file.")
+        return
             
     prioritized_tasks = prioritise(tasks, parsed_args.today)
     
