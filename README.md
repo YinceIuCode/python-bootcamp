@@ -1,6 +1,6 @@
 # Python Bootcamp - Team 03
 
-This repository contains the exercises and tasks for the **Python Bootcamp** program. It serves as a central hub for practical coding, automated testing (CI/CD), and tracking individual team member progress.
+This repository contains the individual exercises and shared team project for the **Python Bootcamp** program (Weeks 1–3). It serves as a central hub for practical coding, automated testing (CI/CD), and tracking team member progress.
 
 ---
 
@@ -13,112 +13,94 @@ To ensure smooth dependency management and prevent conflicts with system-level p
 Open your terminal or command prompt at the root directory of the repository and run:
 
 * **All Operating Systems:**
-
-  ```bash
-  python -m venv venv
-  ```
-
-  *(Use `python3 -m venv venv` if your system defaults `python` to Python 2).*
+```bash
+python -m venv venv
+```
+*(Use `python3 -m venv venv` if your system defaults `python` to Python 2).*
 
 ### Step 2: Activate the Virtual Environment
+* Windows (Command Prompt):
+```DOS
+venv\Scripts\activate
+```
+* Windows (PowerShell):
+```PowerShell
+venv\Scripts\Activate.ps1
+```
+*(Note: If you encounter an Execution Policy error on PowerShell, run `Set-ExecutionPolicy Unrestricted -Scope Process` first).*
 
-* **Windows (Command Prompt):**
-
-  ```cmd
-  venv\Scripts\activate
-  ```
-
-* **Windows (PowerShell):**
-
-  ```powershell
-  venv\Scripts\Activate.ps1
-  ```
-
-  *(Note: If you encounter an Execution Policy error on PowerShell, run `Set-ExecutionPolicy Unrestricted -Scope Process` first).*
-
-* **macOS / Linux:**
-
-  ```bash
-  source venv/bin/activate
-  ```
-
-*(Tip: Upon successful activation, you will see a `(venv)` prefix in your terminal prompt).*
-
----
+* macOS / Linux:
+```Bash
+source venv/bin/activate
+```
 
 ## 📦 2. Installing Dependencies
-
-After activating your virtual environment `(venv)`, upgrade `pip` and install the required testing and linting tools:
-
-```bash
+After activating your virtual environment (`venv`), upgrade `pip` and install the required testing and linting tools:
+```Bash
 pip install --upgrade pip
 pip install pytest ruff
 ```
 
----
+## 🧪 3. Running Local Tests & Linter
+Before pushing your changes to GitHub, run tests and linter checks locally to ensure all solutions pass.
 
-## 🧪 3. Running Local Tests
-
-Before pushing your changes to GitHub, you **MUST** run tests locally to ensure all individual solutions pass.
-
-### Standard Test Command:
-
-```bash
-pytest -q tests/test_w1.py --member <your_member_folder> --variant <variant_number>
+**Individual Homework Tests (W1, W2, W3)**
+```Bash
+pytest -q tests/test_w1.py --member <github_username> --variant <variant_number>
+pytest -q tests/test_w2.py --member <github_username> --variant <variant_number>
+pytest -q -s tests/test_w3.py --member <github_username> --variant <variant_number>
 ```
-
-**Parameters:**
-
-* `--member`: Name of your individual directory inside `members/` (e.g., `hoang_duc_vinh`).
-* `--variant`: Assign variant number for **W1-4** (Integer from `1` to `7`).
-
 **Example:**
-
-```bash
-pytest -q tests/test_w1.py --member hoang_duc_vinh --variant 1
+```Bash
+pytest -q -s tests/test_w3.py --member YinceIuCode --variant 1
+```
+**Code Style & Linter Check (ruff)**
+```Bash
+ruff check .
 ```
 
----
+## 📅 4. Shared Study Planner CLI (Team Project W2–W3)
+The team project in `shared/study_planner/` provides a complete CLI workflow (`parse_csv -> prioritise -> allocate -> render`) with error handling and execution logging to `study_planner.log`.
 
-## 📌 4. Note on Extended Variants (Task W1-4)
+**Run the Study Planner CLI**
+```Bash
+python -m shared.study_planner samples/tasks.csv --hours 2
+python -m shared.study_planner samples/tasks.csv --hours 3.0 --today 2026-10-26
+```
+**Run Team Unit & End-to-End Tests**
+```Bash
+pytest -q tests/test_parse.py tests/test_prioritise.py tests/test_allocate.py tests/test_render.py
+pytest -q -s tests/test_e2e_w3.py
+```
 
+## 📝 5. Note on Extended Variants
 According to the bootcamp guidelines:
 
-* **Variants 1, 2, 3, 4:** Mandatory test execution. Code must pass `pytest` locally and pass automated CI checks on GitHub.
-* **Variants 5, 6, 7:** Extended variants that are **EXEMPT FROM AUTOMATED TESTS**. If you are assigned variants 5, 6, or 7, local/CI test passing for W1-4 is not required.
+* Variants 1, 2, 3, 4: Mandatory test execution. Code must pass `pytest` locally and pass automated CI checks on GitHub.
 
----
+* Variants 5, 6, 7: Extended variants that are **EXEMPT FROM AUTOMATED TESTS**.
 
-## 🔄 5. Git Workflow & Commit Guidelines (Quick Reference)
+## 🔄 6. Git Workflow & Commit Guidelines (Quick Reference)
 
-To ensure full contribution points, follow this exact workflow:
+1. Pull the latest main branch:
+```Bash
+git switch main
+git pull origin main
+```
+2. Create and switch to your feature branch (replace `<N>` with `1`, `2`, or `3`):
+```Bash
+git switch -c py/w<N>-<github-username>
+```
+3. Complete your assignments in `members/<username>/w<N>/` or `shared/study_planner/`.
 
-1. **Pull the latest `main` branch:**
+4. Commit work per exercise independently:
+```Bash
+git add <files>
+git commit -m "feat(py-w3): W3-3 implement study planner CLI"
+```
 
-   ```bash
-   git checkout main
-   git pull origin main
-   ```
-
-2. **Create and switch to your personal feature branch:**
-
-   ```bash
-   git switch -c py/w1-<github-username>
-   ```
-
-3. **Complete your assignments** in your personal folder: `members/<username>/w1/`.
-
-4. **Commit work per exercise independently** (Minimum 5 commits per week required):
-
-   ```bash
-   git add .
-   git commit -m "feat (py-w1): W1-2 word counter"
-   ```
-
-5. **Push your branch to GitHub:**
-
-   ```bash
-   git push -u origin py/w1-<github-username>
-   ```
-
-6. **Open a Pull Request (PR)** on GitHub, tag your designated peer reviewer, and await review/approval from the Team Leader.
+5. Push your branch to GitHub:
+```Bash
+git push -u origin py/w<N>-<github-username>
+```
+6. **Open a Pull Request (PR)** on GitHub, tag your designated peer reviewer, and await review/approval before merging.
