@@ -1,3 +1,5 @@
-[tool.ruff.lint]
-ignore = ["N999", "PLW1510"]
+[tool.ruff]
+exclude = ["tests"]
 
+[tool.ruff.lint]
+ignore = ["N999"]
