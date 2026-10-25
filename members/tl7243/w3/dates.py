@@ -1,5 +1,6 @@
 from datetime import date, timedelta
 
+
 def parse_due(text: str, today: date) -> date:
 
 	"""Parse text into a date relative to today
@@ -19,7 +20,7 @@ def parse_due(text: str, today: date) -> date:
 	if text2 == "tomorrow":
 		return today + timedelta(days=1)
 
-	if text2.startswith("in ") and (text2.endswith(" days") or text2.endswith(" day")):
+	if text2.startswith("in ") and (text2.endswith((" days", " day"))):
 		if len(text2.split()) == 3 and text2.split()[1].isdigit():
 			return today + timedelta(days=int(text2.split()[1]))
 

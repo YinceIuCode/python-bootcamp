@@ -1,8 +1,9 @@
 import argparse
-import sys
 import csv
+import sys
 from datetime import date
 from pathlib import Path
+
 
 def main() -> None:
 
@@ -30,12 +31,12 @@ def main() -> None:
 
 	if args.today:
 		try:
-			today_date = date.fromisoformat(args.today)
+			date.fromisoformat(args.today)
 		except ValueError:
 			print(f"Error: Invalid date format '{args.today}'", file=sys.stderr)
 			sys.exit(1)
 	else:
-		today_date = date.today()
+		date.today()
 
 	file_path = Path(args.tasks_file)
 	if not file_path.exists():
