@@ -2,6 +2,7 @@ from statistics import quantiles
 
 
 def analyse(pairs : list[tuple]) -> dict:
+    """Analyze route data give list of pairs for (route_name, latency(ms))"""
     route_data_dict = {}
     analysed_data = {}
     

@@ -2,6 +2,7 @@ from datetime import date, timedelta
 
 
 def parse_due(text: str, today: date) -> date:
+    """Manipulating due date from today."""
     splitted_dash = text.split("-")
     splitted_space = text.split(" ")
     

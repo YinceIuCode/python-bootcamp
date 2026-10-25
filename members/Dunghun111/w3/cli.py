@@ -1,9 +1,10 @@
 import argparse
-from datetime import date
 
 from shared.study_planner import allocate, parse
 
-if __name__ == "__main__":
+
+def main():
+    """CLI Application for study planner"""
     prog = argparse.ArgumentParser(
         "Study Planer", 
         description="CLI for study planner", 
@@ -14,25 +15,17 @@ if __name__ == "__main__":
     prog.add_argument("--today", nargs = "*", help="Today")
     prog.add_argument("--hours", nargs = 1, help="Hours.")
 
-
     args = prog.parse_args()
 
     file_path : str
     hours : float
-    today_str : list[str]
 
     if args.file:
         file_path = args.file
     
     if args.hours:
-        hours = float(*args.hours)
+        hours = float(*args.hours)    
         
-    if args.today:
-        today_str = args.today[0].split("-")
-    
-    
-    today = date(int(today_str[0]), int(today_str[1]), int(today_str[2]))
-    
     tasks_parsed = parse.parse_csv(file_path)
     hours_blocks = allocate.allocate(tasks_parsed, hours)
 
@@ -51,3 +44,7 @@ if __name__ == "__main__":
         max_length = max(max_length, len(block.task.title))
             
         print(f"  {block_index}. {block.task.title} " + (6 + (max_length - len(block.task.title))) * "." + f" {block.hours} h")
+
+
+if __name__ == "__main__":
+    main()
