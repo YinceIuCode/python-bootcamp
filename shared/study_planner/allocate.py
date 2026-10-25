@@ -2,45 +2,21 @@ from datetime import date
 
 from shared.contract import Block, Task
 
-
-def bisect(find, array):
-    s = 0
-    e = len(array) - 1
-    r = None
-    
-    while s <= e:
-        m = (s + e) // 2
-
-        if array[m] < find:
-            s = m  + 1
-        
-        else:
-            r = m
-            e = m - 1
-    
-    return None if r == None else array[r]
-
 # prioritize importantness
-def allocate(tasks: list[Task], hours: list[float]) -> list[Block]:
-    tasks.sort(key=lambda h : h.importance, reverse=True)
-    hours.sort()
+def allocate(tasks: list[Task], hours: float) -> list[Block]:
+    tasks.sort(key=lambda h : h.effort_h)
     
-    hours_map = {h: 0 for h in hours}
     block_return = []
     
     for task in tasks:
-        hour = bisect(task.effort_h, hours)
-        if hour == None:
-            continue
-        
-        elif hour >= task.effort_h and hours_map.get(hour) == 0:
-            hours_map[hour] = 1
-            block_return.append(Block(task, hour))
-    
+        if task.effort_h <= hours:
+            block_return.append(Block(task, task.effort_h))
+            hours -= task.effort_h
+
     return block_return
 
 task_1 = Task("Huge Task", 5, 10.0, date(2026, 10, 30))
-# task_2 = Task("Test_2", 4, 5, date(2020, 10, 4))
-# task_3 = Task("Test_3", 1, 3, date(2020, 10, 6))
+task_2 = Task("Test_2", 4, 5, date(2020, 10, 4))
+task_3 = Task("Test_3", 1, 3, date(2020, 10, 6))
 
-print(allocate([task_1], [1.0, 2.0]))
+print(allocate([task_1, task_2, task_3], 8))
