@@ -62,10 +62,10 @@ def main() -> None:
 
             try:
                 due_date = parse_due(due_str, today_date)
-            except Exception:
+            except (ValueError, TypeError):
                 try:
                     due_date = date.fromisoformat(due_str)
-                except Exception:
+                except ValueError:
                     due_date = date.max
 
             if not isinstance(due_date, date):
@@ -73,7 +73,6 @@ def main() -> None:
 
             tasks.append((title, due_date, hours))
 
-    # Sắp xếp ưu tiên: 1. Hạn chót gần nhất -> 2. Thời lượng ngắn hơn -> 3. Tên theo bảng chữ cái
     tasks.sort(key=lambda x: (x[1], x[2], x[0]))
 
     print(f"Planning for date: {today_date.isoformat()}")
