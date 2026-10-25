@@ -4,7 +4,7 @@ from pathlib import Path
 
 from shared.study_planner.allocate import allocate
 from shared.study_planner.parse import parse_csv
-from shared.study_planner.prioritise import prioritize
+from shared.study_planner.prioritise import prioritise
 from shared.study_planner.render import render
 
 
@@ -22,8 +22,8 @@ def main(args: list[str] | None = None) -> None:
     parsed_args = parser.parse_args(args)
 
     tasks = parse_csv(parsed_args.filename)
-    prioritized_tasks = prioritize(tasks, parsed_args.today)
-    plan = allocate(prioritized_tasks, [parsed_args.hours])
+    prioritised_tasks = prioritise(tasks, parsed_args.today)
+    plan = allocate(prioritised_tasks, parsed_args.hours)
     print(render(plan))
 
 

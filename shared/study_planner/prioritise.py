@@ -9,14 +9,14 @@ if str(curr_dir) not in sys.path:
 from shared.contract import Task
 
 
-def prioritize_score(t: Task, today: date) -> float:
+def prioritise_score(t: Task, today: date) -> float:
     days_left = max(1, (t.deadline - today).days)
     return t.importance/days_left
 
 def prioritise(tasks:list[Task], today:date) -> list[Task]:
 
     def get_prioritise_score(task: Task) -> float:
-        return prioritize_score(task, today)
+        return prioritise_score(task, today)
 
     prioritise_list = sorted(tasks, key=get_prioritise_score, reverse=True)
     return prioritise_list
