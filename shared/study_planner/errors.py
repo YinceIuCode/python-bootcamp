@@ -1,6 +1,3 @@
-import sys
-
-print("\n", sys.path, "\n")
 
 
 from shared.contract import Task
